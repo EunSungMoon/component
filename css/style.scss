@@ -1,0 +1,48 @@
+.container{
+  position: absolute;
+  top: 40%;
+  left: 40%;
+
+  .modal {
+    padding: 10px;
+    width: 500px;
+    height: 300px;
+    display: none;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(1.5px);
+    -webkit-backdrop-filter: blur(1.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  
+  
+    .modalHead {
+      width: 100%;
+      display: flex;
+      align-items: center;
+  
+      .h1{
+        padding: 0 10px;
+        font-size: 20px;
+        font-weight: bold;
+        width: 100%;
+      }
+      
+      .xBtn {
+        width: 30px;
+        height: 30px;
+        border: none;
+        background: none;
+      }
+    }
+  
+    .modalBody {
+      padding: 15px 10px;
+    }
+  }
+  
+  .line {
+    border-bottom: 1px solid gray;
+  }
+}
