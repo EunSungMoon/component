@@ -27,26 +27,26 @@ export default {
   },
 
   click(btn) {
-    let $modal = sel.el('.modal');
+    let $container = sel.el('.container');
     let $clickBtn = sel.el('.clickBtn');
     $clickBtn.addEventListener('click', function (e) {
-      $modal.style.display = 'flex'
+      $container.style.display = 'flex'
     })
   },
 
   xClick(btn) {
     let $xBtn = sel.el('.xBtn');
-    let $modal = sel.el('.modal');
+    let $container = sel.el('.container');
     $xBtn.addEventListener('click', function () {
-      $modal.style.display = 'none'
+      $container.style.display = 'none'
     })
   },
 
   escClickEvt() {
-    let $modal = sel.el('.modal');
+    let $container = sel.el('.container');
     window.addEventListener('keyup', function (e) {
-      if ($modal.style.display === 'flex' && e.key === 'Escape') {
-        $modal.style.display = 'none'
+      if ($container.style.display === 'flex' && e.key === 'Escape') {
+        $container.style.display = 'none'
       }
     })
   }
