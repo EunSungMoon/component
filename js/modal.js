@@ -1,53 +1,45 @@
 import { sel } from "./app.js";
 
-const tag = '[modal]'
 export default {
   init() {
-    this.createModal();
-    this.click();
-    this.xClick();
-    this.escClickEvt()
+    this.modalTemplate()
+    this.event()
   },
 
-  createModal() {
-    let $container = sel.el('.container');
-    let modalContent = `
-      <div class = "modal" >
-        <div class = "modalHead line">
-          <h1 class ="h1">모달입니다.</h1>
-          <button class = "xBtn">X</button>
+  event() {
+    this.btnEvent('.openBtn', this.addClass)
+    this.btnEvent('.closeBtn', this.removeClass)
+    this.btnEvent('.checkBtn', this.removeClass)
+  },
+
+  modalTemplate() {
+    let content = `
+      <article class = "modalForm modal-bg">
+        <div class = "modalContent">
+          <header>
+            <h1>title</h1>
+            <button type = "button" class = "closeBtn">X</button>
+          </header>
+          <main>modal Content</main>
+          <footer>
+            <button type = "button" class = "checkBtn">check</button>
+          </footer>
         </div>
-        
-        <div class= "modalBody">
-          <span>모달이죠 모달입니다.</span>
-        </div>
-      </div>
+      </article>
     `
-    $container.insertAdjacentHTML('afterbegin', modalContent)
+    sel.el('#modal').insertAdjacentHTML('afterbegin', content);
   },
 
-  click(btn) {
-    let $container = sel.el('.container');
-    let $clickBtn = sel.el('.clickBtn');
-    $clickBtn.addEventListener('click', function (e) {
-      $container.style.display = 'flex'
-    })
+  addClass() {
+    sel.el('.modalForm').classList.add('open');
   },
 
-  xClick(btn) {
-    let $xBtn = sel.el('.xBtn');
-    let $container = sel.el('.container');
-    $xBtn.addEventListener('click', function () {
-      $container.style.display = 'none'
-    })
+  removeClass() {
+    sel.el('.modalForm').classList.remove('open')
+
   },
 
-  escClickEvt() {
-    let $container = sel.el('.container');
-    window.addEventListener('keyup', function (e) {
-      if ($container.style.display === 'flex' && e.key === 'Escape') {
-        $container.style.display = 'none'
-      }
-    })
+  btnEvent(buttonClass, funcName) {
+    sel.el(buttonClass).addEventListener('click', funcName)
   }
 }
